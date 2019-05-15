@@ -56,7 +56,28 @@ $(".crystal-image").on("click", function() {
     // we then add the crystalValue to the user's counter which is a global variable
     // every click, from every crystal adds to the global counter
     counter += crystalValue;
-})
+    console.log(counter);
+    // display counter in html
+    $("#counter").text(counter);
+
+
+    if (counter === gameNumber) {
+        alert("you win");
+        wins++;
+        // display losses in html
+        $("#wins").text(wins);
+        // reset game
+        restart();
+    } 
+    else if (counter > gameNumber) {
+        alert("you lose");
+        losses++;
+        // display losses in html
+        $("#losses").text(losses);
+        // reset game
+        restart();
+    }
+});
 
 
 // ============== FUNCTIONS ============================
@@ -106,5 +127,13 @@ $(".crystal-image").on("click", function() {
 // generate random button values
 // initial score = 0
 // clear display
+function restart() {
+    gameNumber = Math.floor(Math.random() * (120 - 19 + 1) + 19);
+    button1 = Math.floor(Math.random() * (12 - 1 + 1) + 1);
+    button2 = Math.floor(Math.random() * (12 - 1 + 1) + 1);
+    button3 = Math.floor(Math.random() * (12 - 1 + 1) + 1);
+    button4 = Math.floor(Math.random() * (12 - 1 + 1) + 1);
+    counter = 0;
+}
 
 // ================= MAIN PROCESSES ========================
