@@ -63,7 +63,7 @@ $(".crystal-image").on("click", function() {
 
 
     if (counter === gameNumber) {
-        alert("you win");
+        alert("You Win!");
         wins++;
         // display losses in html
         $("#wins").text(wins);
@@ -71,7 +71,7 @@ $(".crystal-image").on("click", function() {
         restart();
     } 
     else if (counter > gameNumber) {
-        alert("you lose");
+        alert("You Lose!");
         losses++;
         // display losses in html
         $("#losses").text(losses);

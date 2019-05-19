@@ -15,22 +15,59 @@
 
 <body>
 
-    <div class="jumbotron">Crystal Collector Game</div>
+    <div class="jumbotron text-center">
+        <h1>Crystal Collector Game</h1>
+    </div>
 
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div id="directions" class="col-md-6 text-center">
+            <p>You will be given a random number at the start of the game.</p>
+            <p>There are four crystals below. By clicking on a crystal you will add a specific amount of points to
+                your
+                total score.</p>
+            <p>You win the game by matching your total score to the random number, you lose the game by if your
+                total score
+                goes above the random number.</p>
+            <p>The value of each crystal is hidden from you until you click on it.</p>
+            <p>Each time the game starts the value of each crystal will be reassigned.</p>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
 
-    <div id="game-number"></div>
-    <div id="crystals"></div>
-    <div>Counter <span id="counter"></span></div>
-    <div>Wins : <span id="wins"></span></div>
-    <div>Losses : <span id="losses"></span></div>
+    <div id="counter-display" class="row">
+        <div class="col-md-3"></div>
+        <div id="game-number-display" class="col-md-2 bg-danger">
+            <h2><span id="game-number"></span></h2>
+        </div>
+        <div class="col-md-2 bg-success">
+            <h2>Counter <span id="counter"></span></h2>
+        </div>
+        <div class="col-md-2 bg-danger">
+            <h2>Wins : <span id="wins"></span></h2>
+            <h2>Losses : <span id="losses"></span></h2>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
 
+    <div id="image-display" class="row">
+        <div class="col-md-3"></div>
+        <div id="crystals" class="col-md-6"></div>
+        <div class="col-md-3"></div>
+    </div>
 
     <!-- jQuery Library -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- bootstrap js -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
     </script>
     <!-- my javascript -->
     <script src="./assets/javascript/game.js"></script>

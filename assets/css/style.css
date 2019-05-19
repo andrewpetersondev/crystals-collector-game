@@ -1,4 +1,21 @@
+body {
+    background-image: url("../images/art-background-blue-sky-289649.jpg")
+}
+
+#directions {
+    background-color: antiquewhite;
+}
+
+#counter-display {
+    margin-top: 10px;
+
+}
+
+#image-display {
+    margin-top: 10px;
+}
+
 .crystal-image {
-    width: 300px;
-    height: 300px;
+    width: 200px;
+    height: 200px;
 }
