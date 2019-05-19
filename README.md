@@ -29,3 +29,7 @@
 * The random number shown at the start of the game should be between 19 - 120.
 
 * Each crystal should have a random hidden value between 1 - 12.
+
+## Sources 
+
+this project may have code from class activites, office hours notes, or from seeking help from TAs and teachers
