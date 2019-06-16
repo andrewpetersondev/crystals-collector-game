@@ -1,78 +1,150 @@
+console.log("beginning of logic");
+
 // GLOBAL VARIABLES 
 // ==================================================================
-var gameNumber = Math.floor(Math.random() * (120 - 19 + 1) + 19);
 
-// buttons
-var button1 = Math.floor(Math.random() * 12 + 1);
-var button2 = Math.floor(Math.random() * 12 + 1);
-var button3 = Math.floor(Math.random() * 12 + 1);
-var button4 = Math.floor(Math.random() * 12 + 1);
+// crystal variables
+var crystal = {
+    blue:
+    {
+        name: "Blue",
+        value: 0
+    },
+    green:
+    {
+        name: "Green",
+        value: 0
+    },
+    yellow:
+    {
+        name: "Yellow",
+        value: 0
+    },
+    red:
+    {
+        name: "Red",
+        value: 0
+    }
+};
 
-// button values array
-var buttonValues = [button1, button2, button3, button4];
+// scores (current and target)
+var currentScore = 0;
+var targetScore = 0;
 
-// button images
-var imagePathArray = ["./assets/images/blue-crystal.png", "./assets/images/green-gem.jpg", "./assets/images/yellow-gem.jpg", "./assets/images/crystal-mineral-glass-ball.jpg"];
+// wins and losses
+var winCount = 0;
+var lossCount = 0;
 
-// output to html
-$("#game-number").text(gameNumber);
-
-// game counters
-wins = 0;
-losses = 0;
-counter = 0;
-
-// testing and debugging
-console.log("Starting Game Number = " + gameNumber);
-console.log("Button Values : " + buttonValues);
-
-// display images 
-for (var i = 0; i < buttonValues.length; i++) {
-    var imageCrystal = $("<img>");
-    imageCrystal.addClass("crystal-image");
-    imageCrystal.attr("src", imagePathArray[i]);
-    imageCrystal.attr("data-crystal-value", buttonValues[i]);
-    $("#crystals").append(imageCrystal);
-}
 
 // FUNCTIONS
 // ======================================================================
-function restart() {
-    gameNumber = Math.floor(Math.random() * (120 - 19 + 1) + 19);
-    button1 = Math.floor(Math.random() * (12 - 1 + 1) + 1);
-    button2 = Math.floor(Math.random() * (12 - 1 + 1) + 1);
-    button3 = Math.floor(Math.random() * (12 - 1 + 1) + 1);
-    button4 = Math.floor(Math.random() * (12 - 1 + 1) + 1);
-    buttonValues = [button1, button2, button3, button4];
-    counter = 0;
-    $("#game-number").text(gameNumber);
-    $("#counter").text(counter);
-    console.log("New Game Number " + gameNumber);
-    console.log("Button Values : " + buttonValues);
-}
+// helper function for getting random values
+var getRandom = function (min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+// starts and restarts the game
+var startGame = function () {
+    // reset current score
+    currentScore = 0;
+    // set new target score
+    targetScore = getRandom(19, 120);
+    // set diff values for each crystal between 1 and 12
+    crystal.blue.value = getRandom(1, 12);
+    crystal.red.value = getRandom(1, 12);
+    crystal.yellow.value = getRandom(1, 12);
+    crystal.green.value = getRandom(1, 12);
+
+    // change html to reflect changes
+    $("#yourScore").html(currentScore);
+    $("#targetScore").html(targetScore);
+
+    // testing and debugging
+    console.log("------------------------------------------");
+    console.log("Target Score: " + targetScore);
+    console.log("Blue: " + crystal.blue.value + "| Red: " + crystal.red.value + "| Green: " + crystal.green.value + "| Yellow: " + crystal.yellow.value);
+    console.log("------------------------------------------");
+
+};
+
+// responds to crystals being clicked
+var addValues = function (crystal) {
+
+    // change current score
+    currentScore = currentScore + crystal.value;
+
+    // update html to show changes in current score
+    $("#yourScore").html(currentScore);
+
+    // call the check win function
+    checkWin();
+
+    // testing and debugging
+    console.log("Your Score : " + currentScore);
+
+};
+
+// check if user won or lost and reset the game
+var checkWin = function () {
+
+    // check if the current score is larger than the target score
+    if (currentScore > targetScore) {
+        alert("you lost");
+        console.log("you lost");
+
+        // add to loss counter
+        lossCount++;
+
+        // change loss count on html
+        $("#losses").html(lossCount);
+
+        // restart the game
+        startGame();
+
+
+    }
+    else if (currentScore === targetScore) {
+        alert("you win");
+
+        // add to win counter
+        winCount++;
+
+        // change win count on html
+        $("#wins").html(winCount);
+
+        // restart the game
+        startGame();
+
+    }
+
+
+};
+
 // MAIN PROCESSES 
 // ==========================================================================
+// starts the game the first time
+startGame();
 
-// this click event applies to every single crystal on the page
-$(".crystal-image").on("click", function () {
-    var crystalValue = ($(this).attr("data-crystal-value"));
-    crystalValue = parseInt(crystalValue);
-    counter += crystalValue;
-    console.log("Counter = " + counter);
-    $("#counter").text(counter);
-    if (counter === gameNumber) {
-        alert("You Win!");
-        wins++;
-        $("#wins").text(wins);
-        restart();
-    }
-    // if (counter < gameNumber) {}
-    // else if (counter === gameNumber) {}
-    // else (counter > gameNumber) {}
-    else if (counter > gameNumber) {
-        alert("You Lose!");
-        losses++;
-        $("#losses").text(losses);
-        restart();
-    }
+$("#blue").click(function () {
+
+    addValues(crystal.blue);
+
+});
+
+$("#green").click(function () {
+
+    addValues(crystal.green);
+
+});
+
+$("#yellow").click(function () {
+
+    addValues(crystal.yellow);
+
+});
+
+$("#red").click(function () {
+
+    addValues(crystal.red);
+
 });

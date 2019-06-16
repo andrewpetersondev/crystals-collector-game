@@ -2,9 +2,11 @@
 <html lang="en">
 
 <head>
+    <!-- meta -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- title -->
     <title>Crystal Collector</title>
     <!-- bootstrap link -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
@@ -15,45 +17,124 @@
 
 <body>
 
-    <div class="jumbotron text-center">
-        <h1 class="text-info">Crystal Collector Game</h1>
-    </div>
+    <!-- container -->
+    <div class="container">
 
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div id="directions" class="col-md-6 text-center">
-            <p>You will be given a random number at the start of the game.</p>
-            <p>There are four crystals below. By clicking on a crystal you will add a specific amount of points to
-                your
-                total score.</p>
-            <p>You win the game by matching your total score to the random number, you lose the game by if your
-                total score
-                goes above the random number.</p>
-            <p>The value of each crystal is hidden from you until you click on it.</p>
-            <p>Each time the game starts the value of each crystal will be reassigned.</p>
+        <!-- jumbotron -->
+        <div class="jumbotron text-center">
+            <h1 class="text-info">Crystal Collector Game</h1>
         </div>
-        <div class="col-md-3"></div>
-    </div>
 
-    <div id="counter-display" class="row">
-        <div class="col-md-3"></div>
-        <div id="game-number-display" class="col-md-2 bg-danger">
-            <h2><span id="game-number"></span></h2>
+        <!-- row 1 -->
+        <div class="row">
+            <!-- column for directions -->
+            <div class="col">
+                <!-- card for directions -->
+                <div class="card" id="directions">
+                    <div class="card-header">
+                        directions
+                    </div>
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">directions</h5> -->
+                        <p class="card-text">You will be given a random number at the start of the game. There are four
+                            crystals below. By clicking on a crystal you will add a specific amount of points to your
+                            total
+                            score. You win the game by matching your total score to the random number, you lose the game
+                            by
+                            if your total score goes above the random number. The value of each crystal is hidden from
+                            you
+                            until you click on it. Each time the game starts the value of each crystal will be
+                            reassigned.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-md-2 bg-success">
-            <h2>Total Score : <span id="counter"></span></h2>
-        </div>
-        <div class="col-md-2 bg-danger">
-            <h2>Wins : <span id="wins"></span></h2>
-            <h2>Losses : <span id="losses"></span></h2>
-        </div>
-        <div class="col-md-3"></div>
-    </div>
+        <!-- row 2 -->
+        <div id="counter-display" class="row">
+            <!-- column for target score -->
+            <div class="col-3">
+                <!-- card for target score -->
+                <div class="card">
+                    <div class="card-header">
+                        target score
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <span id="targetScore"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- column for your score -->
+            <div class="col-3">
+                <!-- card for current score -->
+                <div class="card">
+                    <div class="card-header">
+                        your score
+                    </div>
+                    <div class="card-body">
+                        <!-- <h5 class="card-title">directions</h5> -->
+                        <p class="card-text">
+                            <span id="yourScore"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-    <div id="image-display" class="row">
-        <div class="col-md-3"></div>
-        <div id="crystals" class="col-md-6"></div>
-        <div class="col-md-3"></div>
+            <!-- column for crystal images -->
+            <div class="col-6">
+                <!-- card for crystal options -->
+                <div class="card" id="crystalsDisplay">
+                    <div class="card-header">
+                        crystals
+                    </div>
+                    <div class="card-body text-center">
+                        <!-- <h5 class="card-title">directions</h5> -->
+                        <p class="card-text">
+                            <span id="crystals"></span>
+                            <img src="./assets/images/blue-crystal.png" alt="blue-crystal" id="blue">
+                            <img src="./assets/images/red-crystal.png" alt="red-crystal" id="red">
+                            <img src="./assets/images/green-gem.jpg" alt="green-gem" id="green">
+                            <img src="./assets/images/yellow-gem.jpg" alt="yellow-gem" id="yellow">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- row 3 -->
+        <div class="row">
+            <!-- column -->
+            <div class="col-6">
+
+                <!-- card for wins -->
+                <div class="card">
+                    <div class="card-header">
+                        wins
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <span id="wins">0</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <!-- card for losses -->
+                <div class="card">
+                    <div class="card-header">
+                        losses
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <span id="losses">0</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- jQuery Library -->
@@ -68,7 +149,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
-    <!-- my javascript -->
+    <!-- main game logic -->
     <script src="./assets/javascript/game.js"></script>
 
 </body>
