@@ -1,5 +1,9 @@
 # crystals-collector-game
 
+## Take a look
+
+**[Crystals Collector Game](https://andrewpetersondev.github.io/crystals-collector-game/)**
+
 ## Overview
 
 This browser-based game uses the jQuery library to create a dynamic user experience.
